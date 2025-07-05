@@ -2,7 +2,13 @@ name: Output information
 on: 
   pull_request:
     types: [opened, synchronize]
+    branches:
+      - main
   workflow_dispatch:
+  push:
+    branches:
+      - main
+      - dev-*
 jobs:
   info:
     runs-on: ubuntu-latest
