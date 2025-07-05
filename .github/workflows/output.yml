@@ -1,5 +1,14 @@
 name: Output information
-on: workflow_dispatch
+on: 
+  pull_request:
+    types: [opened, synchronize]
+    branches:
+      - main
+  workflow_dispatch:
+  push:
+    branches:
+      - main
+      - dev-*
 jobs:
   info:
     runs-on: ubuntu-latest
