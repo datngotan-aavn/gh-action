@@ -1,8 +1,26 @@
 name: Output information
-on: workflow_dispatch
+on: 
+  pull_request:
+    types: [opened, synchronize]
+    branches:
+      - main
+  workflow_dispatch:
+  push:
+    branches:
+      - main
+      - dev-*
+env:
+  user_name: ${{ secrets.USER_NAME }}
+  password: ${{ secrets.PASSWORD }}
 jobs:
   info:
+    env:
+      password: 123456
     runs-on: ubuntu-latest
     steps:
       - name: Output github context
-        run: echo "${{ toJSON(github.event) }}"
+        run: | 
+          echo "${{ env.user_name }}"
+          echo "$user_name"
+          echo "${{ env.password }}"
+          echo "$password"
