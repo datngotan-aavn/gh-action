@@ -9,8 +9,13 @@ on:
     branches:
       - main
       - dev-*
+env:
+  user_name: ${{ secrets.USER_NAME }}
+  password: ${{ secrets.PASSWORD }}
 jobs:
   info:
+    env:
+      password: 123456
     runs-on: ubuntu-latest
     steps:
       - name: Output github context
