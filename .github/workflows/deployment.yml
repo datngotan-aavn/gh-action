@@ -18,7 +18,15 @@ jobs:
       - name: Install dependencies
         run: yarn
       - name: Run tests
+        id: run-tests
         run: yarn test
+      - name: Upload test report
+      
+        if: failure() && steps.run-tests.outcome == 'failure'
+        uses: actions/upload-artifact@v4
+        with:
+          name: test-report
+          path: test.json
   build:
     needs: [test]
     runs-on: ubuntu-latest
@@ -54,4 +62,3 @@ jobs:
           name: dist-files
       - name: Output file name
         run: echo "${{needs.build.outputs.script-file}}"
-          
