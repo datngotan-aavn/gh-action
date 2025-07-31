@@ -1,0 +1,20 @@
+name: demo_artifact_and_ouputs
+on:
+  workflow_dispatch:
+jobs:
+  build-ios:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Build project
+        run: echo "Building project..."
+      - name: Deploy
+        run: echo "Deploying..."
+  build-android:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Build project
+        run: echo "Building project..."
+      - name: Deploy
+        run: echo "Deploying..."
+
+
